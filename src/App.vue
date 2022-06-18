@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <section class="app">
+    <VCard :shluha="heh"/>
+    <div class="card">
+      {{ data }}
+    </div>
+    <ul>
+      <li 
+        v-for="item in items"
+        :key="item"
+      >
+        {{ item.Photo }}
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VCard from './components/VCard/VCard.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    VCard
+  },
+
+  props: {
+    data: String,
+  },
+
+  data() {
+    return {
+      items: [],
+    }
+  },
+  methods: {
+    
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
