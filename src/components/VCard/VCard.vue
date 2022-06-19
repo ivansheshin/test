@@ -1,18 +1,44 @@
 <template>
   <div class="card">
-    <img :src="src">
+    <img class="card__img" width="200" height="150" :src="src">
+    <h3> {{ title }} </h3>
+    <p>{{ name }}</p>
+    <VList
+      mainClass="card"
+      :tagsData="tagsData"
+    />
   </div>
 </template>
 
 <script>
+import VList from '../VList/VList.vue';
+
 export default {
   name: 'VCard',
+  components: {
+    VList,
+  },
   props: {
-    src: String,
-  }
+    src: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    tagsData: {
+        type: Array,
+        required: true,
+    }
+  },
 }
 </script>
 
 <style lang="less" scoped>
-  @import "./v-card.less";
+@import "./v-card.less";
 </style>
