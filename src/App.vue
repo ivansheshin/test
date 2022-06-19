@@ -1,6 +1,15 @@
 <template>
-  <section class="app">
-    <VCard v-for="item in items" :key="item" :src="item.Photo"/>
+  <section class="container">
+    <div class="container__card">
+      <VCard 
+        v-for="item in items" 
+        :key="item" 
+        :src="item.Photo"
+        :title="item.Title"
+        :name="item.Name"
+        :tagsData="item.Tags"
+      />
+    </div>
   </section>
 </template>
 
@@ -13,13 +22,8 @@ export default {
     VCard
   },
 
-  props: {
-    data: String,
-  },
-
-
   created() {
-    this.getPhotoSrc();
+    this.getPhotoData();
   },
 
   data() {
@@ -28,7 +32,7 @@ export default {
     }
   },
   methods: {
-    async getPhotoSrc() {
+    async getPhotoData() {
       const API_URL = 'https://api.in.dev-team.club/people?pp=10&p=1';
 
       await fetch(API_URL)
