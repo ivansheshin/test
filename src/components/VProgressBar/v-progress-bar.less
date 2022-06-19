@@ -1,8 +1,30 @@
 .progress {
-  height: 12px;
+  height: 20px;
+
+  &__title {
+    margin: 0;
+  }
+
+  &__main {
+    position: relative;
+    top: -20px;
+    z-index: 2;
+    height: inherit;
+    border-radius: 4px;
+  }
 
   &__substrate {
+    border-radius: 4px;
     height: inherit;
-    background-color: #757575;
+    background-color: #a09f9f;
+  }
+
+  &__text-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__text {
+    margin: 0;
   }
 }

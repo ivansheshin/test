@@ -4,13 +4,14 @@
     <div class="card__main-content">
       <h3 class="card__title"> {{ title }} </h3>
       <p class="card__name">{{ name }}</p>
+      <VProgressBar
+        title="Profit"
+        :info="profit"
+    />
     </div>
     <VList
       mainClass="card"
       :tagsData="tagsData"
-    />
-    <VProgressBar
-      :info="profit"
     />
   </div>
 </template>
