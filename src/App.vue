@@ -1,17 +1,6 @@
 <template>
   <section class="app">
-    <VCard :shluha="heh"/>
-    <div class="card">
-      {{ data }}
-    </div>
-    <ul>
-      <li 
-        v-for="item in items"
-        :key="item"
-      >
-        {{ item.Photo }}
-      </li>
-    </ul>
+    <VCard v-for="item in items" :key="item" :src="item.Photo"/>
   </section>
 </template>
 
@@ -29,7 +18,7 @@ export default {
   },
 
 
-  mounted() {
+  created() {
     this.getPhotoSrc();
   },
 

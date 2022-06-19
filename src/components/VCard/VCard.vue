@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    {{ shluha }}
+    <img :src="src">
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'VCard',
   props: {
-    shluha: String,
+    src: String,
   }
 }
 </script>
