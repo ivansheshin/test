@@ -8,6 +8,7 @@
         :title="item.Title"
         :name="item.Name"
         :tagsData="item.Tags"
+        :profit="item.Profit"
       />
     </div>
   </section>
