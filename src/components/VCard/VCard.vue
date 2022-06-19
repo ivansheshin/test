@@ -1,8 +1,10 @@
 <template>
   <div class="card">
     <img class="card__img" width="200" height="150" :src="src">
-    <h3> {{ title }} </h3>
-    <p>{{ name }}</p>
+    <div class="card__text-content">
+      <h3 class="card__title"> {{ title }} </h3>
+      <p class="card__name">{{ name }}</p>
+    </div>
     <VList
       mainClass="card"
       :tagsData="tagsData"
