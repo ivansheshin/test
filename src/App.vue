@@ -1,27 +1,30 @@
 <template>
-  <section class="container">
-    <div class="container__card">
-      <VCard 
-        v-for="item in items" 
-        :key="item" 
-        :src="item.Photo"
-        :title="item.Title"
-        :name="item.Name"
-        :tagsData="item.Tags"
-        :profit="item.Profit"
-        :attention="item.Attention"
-      />
-    </div>
-  </section>
+<VLoadElem v-if="isLoading" />
+  <section v-else class="container">
+      <div class="container__card">
+        <VCard 
+          v-for="item in items" 
+          :key="item" 
+          :src="item.Photo"
+          :title="item.Title"
+          :name="item.Name"
+          :tagsData="item.Tags"
+          :profit="item.Profit"
+          :attention="item.Attention"
+        />
+      </div>
+    </section>
 </template>
 
 <script>
 import VCard from './components/VCard/VCard.vue'
+import VLoadElem from './components/VLoadElem/VLoadElem.vue'
 
 export default {
   name: 'App',
   components: {
-    VCard
+    VCard,
+    VLoadElem,
   },
 
   created() {
@@ -31,20 +34,21 @@ export default {
   data() {
     return {
       items: [],
+      isLoading: false,
     }
   },
   methods: {
     async getPhotoData() {
+      this.isLoading = true;
       const API_URL = 'https://api.in.dev-team.club/people?pp=10&p=1';
-
-      await fetch(API_URL)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
+      try {
+          const response = await fetch(API_URL);
+          const data = await response.json();
           this.items = data;
-        })
-        .catch((error) => console.error(error));
+          this.isLoading = false;
+      } catch(error) {
+        console.log(error);
+      }
     }
   }
 }
