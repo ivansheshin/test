@@ -1,42 +1,49 @@
 <template>
   <div class="progress">
-    <div class="progress__text-content">
-      <p class="progress__title">{{ title }}</p>
-      <p class="progress__text">{{ this.profit }}</p>
-    </div>
-    <div class="progress__substrate"></div>
-    <div
-      class="progress__main"
-      :style="`background-color: ${this.bgColor}; width: ${this.width}`"
-      >
-    </div>
+    <VPersonWorkData
+      title="Profit"
+      :value="`${getProfit}`"
+    >
+      <div class="progress__substrate"></div>
+      <div
+        class="progress__main"
+        :style="`background-color: ${getBgColor}; width: ${getWidth}`"
+        >
+      </div>
+    </VPersonWorkData>
   </div>
 </template>
 
 <script>
+import VPersonWorkData from '../VPersonWorkData/VPersonWorkData.vue';
+
 export default {
   name: 'VProgressBar',
+  components: {
+    VPersonWorkData,
+  },
+
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
     info: {
       type: Array,
       required: true,
     }
   },
-  data() {
-    return {
-      bgColor: `#${this.info[0].Color}`,
-      width: '',
-      profit: `+${this.info[0].Amount}$`,
-    }
+  computed: {
+    getWidth() {
+      const fullAmount = 1000;
+      const calcPart = this.info[0].Amount/fullAmount;
+      return `${calcPart * 100}%`;
+    },
+    getBgColor() {
+      return `#${this.info[0].Color}`;
+    },
+    getProfit() {
+      return `+${this.info[0].Amount}$`
+    },
   },
   created() {
-    const fullAmount = 1000;
-    const calcPart = this.info[0].Amount/fullAmount;
-    this.width = `${calcPart * 100}%`;
+
   },
 }
 </script>
