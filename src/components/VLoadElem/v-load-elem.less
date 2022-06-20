@@ -1,0 +1,23 @@
+@keyframes doubleRotate {
+  to {
+    transform: rotate(720deg);
+  }
+}
+
+.load-elem {
+  position: relative;
+  display: inline-block;
+  top: 500px;
+  left: 50%;
+
+  &__item {
+    display: block;
+    width: 70px;
+    height: 70px;
+    background: transparent;
+    border: 10px solid #116611;
+    border-bottom-color: transparent !important;
+    border-radius: 100%;
+    animation: doubleRotate 1s ease infinite;
+  }
+}
