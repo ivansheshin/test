@@ -5,10 +5,13 @@
       <h3 class="card__title"> {{ title }} </h3>
       <p class="card__name">{{ name }}</p>
       <VProgressBar
-        title="Profit"
         :info="profit"
-    />
+      />
+      <VProportionDiagram
+        :info="attention"
+      />
     </div>
+
     <VList
       mainClass="card"
       :tagsData="tagsData"
@@ -46,7 +49,12 @@ export default {
     profit: {
       type: Array,
       required: true,
+    },
+    attention: {
+      type: Array,
+      required: true,
     }
+
   },
 }
 </script>
