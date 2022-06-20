@@ -1,20 +1,20 @@
 <template>
   <div class="card">
-    <img class="card__img" width="200" height="150" :src="src">
+    <img class="card__img" width="200" height="150" :src="item.Photo">
     <div class="card__main-content">
-      <h3 class="card__title"> {{ title }} </h3>
-      <p class="card__name">{{ name }}</p>
+      <h3 class="card__title"> {{ item.Title }} </h3>
+      <p class="card__name">{{ item.Name }}</p> 
       <VProgressBar
-        :info="profit"
+        :info="item.Profit"
       />
       <VProportionDiagram
-        :info="attention"
+        :info="item.Attention"
       />
     </div>
 
     <VList
       mainClass="card"
-      :tagsData="tagsData"
+      :tagsData="item.Tags"
     />
   </div>
 </template>
@@ -32,31 +32,10 @@ export default {
     VProportionDiagram,
   },
   props: {
-    src: {
-      type: String,
+    item: {
+      type: Object,
       required: true,
     },
-    title: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    tagsData: {
-        type: Array,
-        required: true,
-    },
-    profit: {
-      type: Array,
-      required: true,
-    },
-    attention: {
-      type: [Array, null],
-      required: true,
-    }
-
   },
 }
 </script>

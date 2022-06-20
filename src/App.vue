@@ -5,12 +5,7 @@
         <VCard 
           v-for="item in items" 
           :key="item" 
-          :src="item.Photo"
-          :title="item.Title"
-          :name="item.Name"
-          :tagsData="item.Tags"
-          :profit="item.Profit"
-          :attention="item.Attention"
+          :item="item"
         />
       </div>
     </section>
