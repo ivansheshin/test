@@ -22,12 +22,14 @@
 <script>
 import VList from '../VList/VList.vue';
 import VProgressBar from '../VProgressBar/VProgressBar.vue';
+import VProportionDiagram from '../VProportionDiagram/VProportionDiagram.vue';
 
 export default {
   name: 'VCard',
   components: {
     VList,
     VProgressBar,
+    VProportionDiagram,
   },
   props: {
     src: {
@@ -51,7 +53,7 @@ export default {
       required: true,
     },
     attention: {
-      type: Array,
+      type: [Array, null],
       required: true,
     }
 
