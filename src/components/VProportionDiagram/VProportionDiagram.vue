@@ -45,7 +45,7 @@ export default {
   methods: {
     getPartWidth(part) {
       const fullAmount = this.getAmount;
-      return `${(fullAmount/part.Amount*100)}%`;
+      return `${(part.Amount/fullAmount*100)}%`;
     },
 
 }
